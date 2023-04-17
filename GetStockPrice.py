@@ -13,6 +13,7 @@ import numpy as np
 from pandas_datareader import data as pdr
 import datetime as dt
 import yfinance as yf
+import openpyxl
 
 
 ######################################
@@ -21,6 +22,11 @@ import yfinance as yf
 
 def get_stock_price (FileName, Ticker):
 
+    # open an excel file
+    excel_file = openpyxl.Workbook()
+    sheet = excel_file.active
+
+    # get stock info
     for i in Ticker:        
 
         last_day_stock_info = yf.Ticker(i + ".SA").history("1d")
@@ -42,14 +48,20 @@ def get_stock_price (FileName, Ticker):
         print("\n" + i)
         print("Date :", stock_date)
         print("Price :", str(stock_price))
+        
+        # add info in the excel spreedsheet
+        sheet.append([i, stock_price, stock_date])
 
+    # save excel file
+    excel_file.save(FileName)
+    
 
 ######################################
 # Example:
 ######################################
 
 file_name = "Results.xlsx"
-tickers = ["ITSA4", "PSSA3", "VALE3F", "JNJB34", "HGLG11"]
+tickers = ["ITSA4", "PSSA3", "VALE3F", "JNJB34", "HGLG11", "MXRF11"]
 
 get_stock_price(file_name, tickers)
 
