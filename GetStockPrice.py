@@ -14,6 +14,7 @@ from pandas_datareader import data as pdr
 import datetime as dt
 import yfinance as yf
 import openpyxl
+from openpyxl.styles import Alignment
 
 
 ######################################
@@ -51,6 +52,11 @@ def get_stock_price (FileName, Ticker):
         
         # add info in the excel spreedsheet
         sheet.append([i, stock_price, stock_date])
+
+    # center align stock price cells
+    for row in sheet[1:sheet.max_row]:
+        cell = row[1]
+        cell.alignment = Alignment(horizontal='center')
 
     # save excel file
     excel_file.save(FileName)
