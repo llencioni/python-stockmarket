@@ -1,0 +1,5 @@
+numpy==1.23.5
+openpyxl==3.0.10
+pandas==1.5.3
+pandas_datareader==0.10.0
+yfinance==0.2.17
