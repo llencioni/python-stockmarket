@@ -15,6 +15,7 @@ import datetime as dt
 import yfinance as yf
 import openpyxl
 from openpyxl.styles import Alignment
+from tkinter import *
 
 
 ######################################
@@ -30,7 +31,8 @@ def get_stock_price (FileName, Ticker):
     # get stock info
     for i in Ticker:        
 
-        last_day_stock_info = yf.Ticker(i + ".SA").history("1d")
+        stock_ticker = i + ".SA"
+        last_day_stock_info = yf.Ticker(stock_ticker).history("1d")
         
         # Get Stock Price (get rid of index, square brackets, convert array to float)
         stock_price = last_day_stock_info['Close']
@@ -54,9 +56,10 @@ def get_stock_price (FileName, Ticker):
         sheet.append([i, stock_price, stock_date])
 
     # center align stock price cells
-    for row in sheet[1:sheet.max_row]:
-        cell = row[1]
-        cell.alignment = Alignment(horizontal='center')
+#    for row in sheet[1:sheet.max_row]:
+
+    #        cell = row[1]
+#        cell.alignment = Alignment(horizontal='center')
 
     # save excel file
     excel_file.save(FileName)
@@ -66,9 +69,17 @@ def get_stock_price (FileName, Ticker):
 # Example:
 ######################################
 
-file_name = "Results.xlsx"
-tickers = ["ITSA4", "PSSA3", "VALE3F", "JNJB34", "HGLG11", "MXRF11"]
+if __name__ == "__main__":
 
-get_stock_price(file_name, tickers)
+    # Read each line (tickers) and get rid of "\n" in the end of each string
+    with open('stock-fii-to-read.txt','r') as f:
+        input_tickers = f.read().splitlines()
+
+    # Name of the Excel file output"
+    output_file_name = "ACAO-FIIs.xlsx"
+
+    # Get values for each ticker and save it in the Excel file
+    get_stock_price(output_file_name, input_tickers)
+
 
 
