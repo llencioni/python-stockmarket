@@ -61,10 +61,14 @@ class UI (QMainWindow):
         with open(self.FileTxt[0],'r') as f:
             Ticker = f.read().splitlines()
 
-        # Name of the Excel file output"
-#        FileName = "ACAO-FIIs.xlsx"
+        # Name of the Excel file output
         FileName = self.input.text() + ".xlsx"
-        print("\nExcel name: " + FileName)
+        
+        # check if the input name field is empty
+        if FileName == ".xlsx":
+            FileName = "Output.xlsx"
+            
+        print("\nOutput excel file name: " + FileName)
 
         # open an excel file
         excel_file = openpyxl.Workbook()
