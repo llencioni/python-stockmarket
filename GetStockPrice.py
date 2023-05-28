@@ -16,47 +16,56 @@ import yfinance as yf
 import openpyxl
 from openpyxl.styles import Alignment
 
+from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QLineEdit
+from PyQt5 import QtCore, uic
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
-from PyQt5 import QtCore
-from stockGUI import *
 
-
-######################################
-# GUI class from QtDesigner
-######################################
-
-class Tela (QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        
-        # Buttons click
-        self.ui.button1.clicked.connect(self.get_stock_price)
-        self.ui.buttonOpenTXT.clicked.connect(self.getTxtFile)
 
 ######################################
 # Get stock prices via Yahoo Finance
 ######################################
-
-    def getTxtFile (self):
+class UI (QMainWindow):
+    def __init__(self):
+        super().__init__()
         
-        self.FileTxt = QFileDialog.getOpenFileName(self, "", "", "Text (*.txt)")
+        # Load the ui file
+        uic.loadUi("./QtDesigner-files/StockMarket.ui", self)
+
+        # Buttons click
+        self.button1.clicked.connect(self.get_stock_price)
+        self.buttonOpenTXT.clicked.connect(self.getTxtFile)
+        
+        # Name of the excel file as output
+        self.input = self.lineEditInputExcel
+
+        # show 
+        self.show()
+
+    ############################
+    # Input stock prices (.txt)
+    ############################
+    def getTxtFile (self):
+
+        self.FileTxt = QFileDialog.getOpenFileName(self, "", "Text (*.txt)")
         
         if self.FileTxt:
-            print("\nFile name:" + self.FileTxt[0])
+            print("\nInput .txt file name: " + self.FileTxt[0])
 
+    ############################
+    # Output excel file (.xlsx)
+    ############################
     @QtCore.pyqtSlot()
     def get_stock_price (self):
     
         # Read each line (tickers) and get rid of "\n" in the end of each string
         with open(self.FileTxt[0],'r') as f:
             Ticker = f.read().splitlines()
-    
+
         # Name of the Excel file output"
-        FileName = "ACAO-FIIs.xlsx"
-    
+#        FileName = "ACAO-FIIs.xlsx"
+        FileName = self.input.text() + ".xlsx"
+        print("\nExcel name: " + FileName)
+
         # open an excel file
         excel_file = openpyxl.Workbook()
         sheet = excel_file.active
@@ -96,17 +105,15 @@ class Tela (QMainWindow):
     
         # save excel file
         excel_file.save(FileName)
-    
 
 ######################################
-# Example:
+# Instanciate the app
 ######################################
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    w = Tela()
-    w.show()
-    sys.exit(app.exec_())
+# Create an instance of QtWidgets.QApplication
+app = QApplication(sys.argv)
+UIWindow = UI()
+app.exec_()
 
 
 

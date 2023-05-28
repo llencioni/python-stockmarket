@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>467</width>
+    <width>509</width>
     <height>309</height>
    </rect>
   </property>
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="button1">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>150</y>
+      <x>180</x>
+      <y>180</y>
       <width>171</width>
       <height>51</height>
      </rect>
@@ -30,10 +30,10 @@
    <widget class="QLabel" name="label1">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>231</width>
-      <height>81</height>
+      <x>20</x>
+      <y>80</y>
+      <width>241</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -42,20 +42,61 @@
      </font>
     </property>
     <property name="text">
-     <string>Select the .txt file with the Tickers: </string>
+     <string>2. Select the .txt file with the Tickers: </string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonOpenTXT">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>60</y>
-      <width>121</width>
+      <y>80</y>
+      <width>161</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Open txt File</string>
+     <string>Open tickers (.txt file)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label1_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>261</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>1. Give a name for the excel outpu file: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>30</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>.xlsx</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditInputExcel">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>30</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -64,7 +105,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>467</width>
+     <width>509</width>
      <height>24</height>
     </rect>
    </property>

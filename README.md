@@ -6,7 +6,9 @@ To install all the packages needed to run this code:
 
 ** How to Used It
 
-. Put the tickers you are interested in the "stock-fii-to-read.txt" file
+. Put the tickers you are interested in a .txt file (see examaple in the "sample.txt")
 
-. To convert GUI from QtDesigner:
+. I used to convert GUI from QtDesigner using 'pyuic':
 >> pyuic5 -x ./QtDesigner-files/StockMarket.ui -o stockGUI.py
+
+. But now I've changed the code to input the .ui file directly (easier)
