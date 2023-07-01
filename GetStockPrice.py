@@ -77,7 +77,11 @@ class UI (QMainWindow):
         # get stock info
         for i in Ticker:        
     
-            stock_ticker = i + ".SA"
+            if (i == "IBOV"):
+                stock_ticker = "^BVSP"
+            else:
+                stock_ticker = i + ".SA"
+            
             last_day_stock_info = yf.Ticker(stock_ticker).history("1d")
             
             # Get Stock Price (get rid of index, square brackets, convert array to float)
