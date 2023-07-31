@@ -1,5 +1,5 @@
 # python-stockmarket
-How to get stock market information using Python
+Get stock market information using Python + Qt (HMI)
 
 To install all the packages needed to run this code:
 >> pip install -r requirements.txt
