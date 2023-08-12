@@ -113,9 +113,10 @@ class UI (QMainWindow):
         # save the excel file
         excel_file.save(FileName)
         
-        # open the excel file (on MacOS)
-        cmd = "open -a '/Applications/Microsoft Excel.app' "+FileName
-        os.system(cmd)
+        # open the excel file (only on MacOS)
+        if(sys.platform == "darwin"):
+            cmd = "open -a '/Applications/Microsoft Excel.app' "+FileName
+            os.system(cmd)
 
 ######################################
 # Instanciate the app
