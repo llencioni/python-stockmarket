@@ -19,7 +19,7 @@ from openpyxl.styles import Alignment
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QLineEdit
 from PyQt5 import QtCore, uic
 import sys
-
+import os
 
 ######################################
 # Get stock prices via Yahoo Finance
@@ -107,12 +107,15 @@ class UI (QMainWindow):
     
         # center align stock price cells
     #    for row in sheet[1:sheet.max_row]:
-    
         #        cell = row[1]
     #        cell.alignment = Alignment(horizontal='center')
     
-        # save excel file
+        # save the excel file
         excel_file.save(FileName)
+        
+        # open the excel file (on MacOS)
+        cmd = "open -a '/Applications/Microsoft Excel.app' "+FileName
+        os.system(cmd)
 
 ######################################
 # Instanciate the app
