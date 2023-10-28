@@ -9,7 +9,7 @@ Get stock market information using Python + Qt (HMI)
 
 ** How to run it:
 ```
-   $ python3 GetStockPrice.py
+python3 GetStockPrice.py
 ```
 
 ** How to Used It
@@ -21,14 +21,16 @@ Get stock market information using Python + Qt (HMI)
 - Braziliian Ibovespa index should be entered as IBOV
 
 
-** Notes:
+** Design Notes:
 
 - I used 'pyuic' in the beggining to convert GUI from QtDesigner:
 ```
 pyuic5 -x ./QtDesigner-files/StockMarket.ui -o stockGUI.py
 ```
 - But I've changed the Python code to input the .ui file directly (easier)
-
+```
+uic.loadUi("./QtDesigner-files/StockMarket.ui", self)
+```
 - To install all the packages needed to run this code:
 ```
 pip install -r requirements.txt
