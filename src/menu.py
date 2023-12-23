@@ -16,7 +16,7 @@ import yfinance as yf
 import openpyxl
 from openpyxl.styles import Alignment
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QLineEdit
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QLineEdit
 from PyQt5 import QtCore, uic
 import sys
 import os
@@ -25,6 +25,10 @@ import os
 # Get stock prices via Yahoo Finance
 ######################################
 class UI (QMainWindow):
+    
+    ####################
+    # Constructor
+    ####################
     def __init__(self):
         super().__init__()
         
@@ -38,18 +42,16 @@ class UI (QMainWindow):
         # Name of the excel file as output
         self.input = self.lineEditInputExcel
 
-        # show 
-        self.show()
-
     ############################
     # Input stock prices (.txt)
     ############################
     def getTxtFile (self):
-
-        self.FileTxt = QFileDialog.getOpenFileName(self, "", "Text (*.txt)")
         
+        self.FileTxt = QFileDialog.getOpenFileName(self, "", "Text (*.txt)")
+    
         if self.FileTxt:
             print("\nInput .txt file name: " + self.FileTxt[0])
+
 
     ############################
     # Output excel file (.xlsx)
@@ -117,15 +119,6 @@ class UI (QMainWindow):
         if(sys.platform == "darwin"):
             cmd = "open -a '/Applications/Microsoft Excel.app' "+FileName
             os.system(cmd)
-
-######################################
-# Instanciate the app
-######################################
-
-# Create an instance of QtWidgets.QApplication
-app = QApplication(sys.argv)
-UIWindow = UI()
-app.exec_()
 
 
 
