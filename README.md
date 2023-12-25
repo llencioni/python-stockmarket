@@ -17,7 +17,7 @@ Get stock market information using Python + Qt (HMI)
 
 ## How to run it:
 ```console
-python3 GetStockPrice.py
+python3 main.py
 ```
 
 ## How to Used it:
