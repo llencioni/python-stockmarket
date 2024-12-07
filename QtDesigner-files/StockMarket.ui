@@ -73,7 +73,7 @@
      </font>
     </property>
     <property name="text">
-     <string>1. Give a name for the excel outpu file: </string>
+     <string>1. Give a name for the excel output file: </string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
